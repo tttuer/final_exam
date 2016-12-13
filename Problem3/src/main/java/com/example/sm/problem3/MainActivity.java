@@ -52,6 +52,11 @@ class CustomerThread extends Thread{
         this.customer = customer;
     }
     // need something here
+
+    @Override
+    public void run() {
+        super.run();
+    }
 }
 
 abstract class Person{
@@ -71,6 +76,11 @@ class Customer extends Person{
     }
 
     // need something here
+
+    @Override
+    void work() {
+
+    }
 }
 
 
@@ -89,9 +99,9 @@ class Manager extends Person{
         while(listSize > 0){
             for(int i = 0; i < listSize; i++){
                 if(list.get(i).spent_money > list.get(i+1).spent_money){
-                    int temp = list.get(i).spent_money;
+                    Customer temp = list.get(i);
                     list.set(i,list.get(i+1));
-                    list.set(i+1,)
+                    list.set(i+1,temp);
                 }
             }
         }
