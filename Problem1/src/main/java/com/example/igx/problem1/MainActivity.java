@@ -1,5 +1,8 @@
 package com.example.igx.problem1;
 
+import android.content.Intent;
+import android.os.Message;
+import android.os.Messenger;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity /* implements Something1, So
         final TextView text_selectedType = (TextView) findViewById(R.id.text_selectedType);
         final EditText edit_phoneNumber = (EditText) findViewById(R.id.edit_phoneNumber);
 
+        final Intent msgIntent = new Intent();
+
         btn_getLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,7 +44,6 @@ public class MainActivity extends AppCompatActivity /* implements Something1, So
         btn_sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
     }
