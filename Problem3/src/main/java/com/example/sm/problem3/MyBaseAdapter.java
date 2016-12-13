@@ -45,6 +45,8 @@ public class MyBaseAdapter extends BaseAdapter{
 
         // need something here
 
+        View itemLayout = mLayoutInflater.inflate(position,parent);
+
         return itemLayout;
 
     }

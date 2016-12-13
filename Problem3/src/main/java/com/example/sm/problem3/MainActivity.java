@@ -6,6 +6,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 // need something here
+                ct.run();
             } catch (InterruptedException e) { }
         }
 
@@ -55,6 +57,7 @@ class CustomerThread extends Thread{
 
     @Override
     public void run() {
+        customer.work();
         super.run();
     }
 }
@@ -79,7 +82,11 @@ class Customer extends Person{
 
     @Override
     void work() {
+        Random random = new Random();
 
+        for(int i = 0;i < 10;i++){
+            Person.money -= random.nextInt(1000) + 1;
+        }
     }
 }
 
@@ -115,4 +122,6 @@ class Manager extends Person{
 }
 
 // need something here
+
+
 
