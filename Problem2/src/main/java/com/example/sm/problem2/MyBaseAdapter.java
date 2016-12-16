@@ -7,7 +7,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class MyBaseAdapter extends BaseAdapter implements AdapterView.OnItemClickListener{
@@ -67,6 +71,31 @@ public class MyBaseAdapter extends BaseAdapter implements AdapterView.OnItemClic
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // need something here
+        TextView nameTextView = null;
+        TextView ageTextView = null;
+        TextView salaryTextView = null;
+
+        if(convertView == null){
+            convertView = mLayoutInflater.inflate(R.layout.activity_main,null);
+            nameTextView = (TextView)convertView.findViewById(R.id.edit_name);
+            ageTextView = (TextView)convertView.findViewById(R.id.edit_age);
+            salaryTextView = (TextView)convertView.findViewById(R.id.edit_salary);
+
+            convertView.setTag(nameTextView);
+            convertView.setTag(ageTextView);
+            convertView.setTag(salaryTextView);
+        } else {
+            nameTextView = (TextView)convertView.getTag();
+            ageTextView = (TextView)convertView.getTag();
+            salaryTextView = (TextView)convertView.getTag();
+        }
+
+        Employee employee = mData.get(position);
+
+        nameTextView.setText(employee.getName());
+        ageTextView.setText(employee.getAge());
+        salaryTextView.setText(employee.getSalary());
+
         return convertView;
     }
 }

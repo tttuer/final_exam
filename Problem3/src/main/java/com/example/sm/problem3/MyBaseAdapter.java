@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -44,10 +45,19 @@ public class MyBaseAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
 
         // need something here
+        if(convertView == null){
+            convertView = mLayoutInflater.inflate(R.layout.list_view_item_layout,null);
+        }
 
-        View itemLayout = mLayoutInflater.inflate(position,parent);
+        TextView nameTextView = (TextView)convertView.findViewById(R.id.text_name);
+        TextView moneyTextView = (TextView)convertView.findViewById(R.id.text_money);
 
-        return itemLayout;
+        Customer customer = mData.get(position);
+
+        nameTextView.setText(customer.name);
+        moneyTextView.setText(""+customer.spent_money);
+
+        return convertView;
 
     }
 }

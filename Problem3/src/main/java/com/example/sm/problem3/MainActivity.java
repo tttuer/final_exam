@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 // need something here
-                ct.run();
+                ct.sleep(100);
             } catch (InterruptedException e) { }
         }
 
@@ -85,7 +85,9 @@ class Customer extends Person{
         Random random = new Random();
 
         for(int i = 0;i < 10;i++){
-            Person.money -= random.nextInt(1000) + 1;
+            int randomMoney = random.nextInt(1000) + 1;
+            Person.money -= randomMoney;
+            this.spent_money += randomMoney;
         }
     }
 }
@@ -101,7 +103,7 @@ class Manager extends Person{
     void sort(){ // 직접 소팅 알고리즘을 이용하여 코딩해야함. 자바 기본 정렬 메소드 이용시 감
 
         // need something here
-        int listSize = list.size();
+        int listSize = list.size() - 1;
 
         while(listSize > 0){
             for(int i = 0; i < listSize; i++){
@@ -111,6 +113,7 @@ class Manager extends Person{
                     list.set(i+1,temp);
                 }
             }
+            listSize--;
         }
 
     }

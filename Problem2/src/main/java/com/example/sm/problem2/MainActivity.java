@@ -6,18 +6,21 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     MyBaseAdapter adapter;
     ListView listview;
+    ArrayList<Employee> emp_list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // need something here
-        ArrayList<Employee> emp_list = new ArrayList<>();
+        emp_list = new ArrayList<>();
 
         adapter = new MyBaseAdapter(this, emp_list);
         listview = (ListView) findViewById(R.id.listView1) ;
@@ -47,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btn_store:
                 // need something here
-                adapter.add(new Employee(edit_name.getText().toString(),Integer.parseInt(edit_age.getText().toString()),Integer.parseInt(edit_salary.getText().toString())));
+                employee = new Employee(edit_name.getText().toString(),Integer.parseInt(edit_age.getText().toString()),Integer.parseInt(edit_salary.getText().toString()));
+
+                adapter.add(employee);
                 break;
 
             case R.id.btn_modify:
