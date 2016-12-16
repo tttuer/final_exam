@@ -1,6 +1,7 @@
 package com.example.sm.problem2;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,25 +77,20 @@ public class MyBaseAdapter extends BaseAdapter implements AdapterView.OnItemClic
         TextView salaryTextView = null;
 
         if(convertView == null){
-            convertView = mLayoutInflater.inflate(R.layout.activity_main,null);
-            nameTextView = (TextView)convertView.findViewById(R.id.edit_name);
-            ageTextView = (TextView)convertView.findViewById(R.id.edit_age);
-            salaryTextView = (TextView)convertView.findViewById(R.id.edit_salary);
-
-            convertView.setTag(nameTextView);
-            convertView.setTag(ageTextView);
-            convertView.setTag(salaryTextView);
-        } else {
-            nameTextView = (TextView)convertView.getTag();
-            ageTextView = (TextView)convertView.getTag();
-            salaryTextView = (TextView)convertView.getTag();
+            convertView = mLayoutInflater.inflate(R.layout.list_view_item_layout,null);
         }
 
-        Employee employee = mData.get(position);
+            nameTextView = (TextView) convertView.findViewById(R.id.text_employeeName);
+            ageTextView = (TextView) convertView.findViewById(R.id.text_employeeAge);
+            salaryTextView = (TextView) convertView.findViewById(R.id.text_employeeSalary);
 
-        nameTextView.setText(employee.getName());
-        ageTextView.setText(employee.getAge());
-        salaryTextView.setText(employee.getSalary());
+            Employee employee = mData.get(position);
+            Log.v("입력된 값", employee.getName() + "" + employee.getAge() + "" + employee.getSalary());
+
+            nameTextView.setText(employee.getName());
+            ageTextView.setText(""+ employee.getAge());
+            salaryTextView.setText("" + employee.getSalary());
+
 
         return convertView;
     }

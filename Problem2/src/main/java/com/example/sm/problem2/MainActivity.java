@@ -1,6 +1,7 @@
 package com.example.sm.problem2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_store:
                 // need something here
                 employee = new Employee(edit_name.getText().toString(),Integer.parseInt(edit_age.getText().toString()),Integer.parseInt(edit_salary.getText().toString()));
-
+                Log.v("입력","" + employee.getName() + "" + employee.getAge() + "" + employee.getSalary());
                 adapter.add(employee);
                 break;
 
