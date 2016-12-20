@@ -39,13 +39,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btn_inc:
                 // need something here
-                employee = (Employee)adapter.getItem(v.getId());
+                Log.v("getid값 : ",""+v.getId());
+                employee = (Employee)adapter.getItem(adapter.selected_position);
                 employee.increase();
                 break;
 
             case R.id.btn_dec:
                 // need something here
-                employee = (Employee)adapter.getItem(v.getId());
+                employee = (Employee)adapter.getItem(adapter.selected_position);
                 employee.decrease();
                 break;
 
@@ -58,11 +59,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btn_modify:
                 // need something here
+                adapter.notifyDataSetInvalidated();
                 break;
 
             case R.id.btn_delete:
                 // need something here
-                adapter.delete(v.getId());
+                adapter.delete(adapter.selected_position);
                 break;
         }
     }
